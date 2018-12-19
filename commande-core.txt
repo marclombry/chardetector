@@ -1,0 +1,9 @@
+ENT52662225                           201812193025940007800                      3025940007800                                                                                            20190114EUR
+COELIVRAISON LE 14/01/2019 A 00:00 H                                                                                                                                                                                                                                                                                                                             
+ADR001LEROY MERLIN JAUX                                                     Zac de Jaux 154 r M etiers                                                                                    60880JAUX                               FR 
+LIG1     3700441960419                      FINITION BI MAT 250ML                                                             8,00         13,5500201901143700441960419                      
+COLLIVRAISON LE 14/01/2019 A 00:00 H                                     
+LIG2     3700441930061                      COUVRE ET LISSE NEIGE GLACEE 5KG                                                  2,00         18,9200201901143700441930061                      
+COLLIVRAISON LE 14/01/2019 A 00:00 H                                     
+LIG3     3700441960518                      FINITION BI BRILLANT 500ML                                                        4,00         20,2400201901143700441960518                      
+COLLIVRAISON LE 14/01/2019 A 00:00 H                                     
