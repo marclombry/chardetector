@@ -1,37 +1,19 @@
 <?php
-//liste des caractere a supprimer
-$listChar = [
-	'/[áàâãªä]/u' => 'a',
-	'/[ÁÀÂÃÄ]/u' => 'A',
-	'/[ÍÌÎÏ]/u' => 'I',
-	'/[íìîï]/u' => 'i',
-	'/[éèêë]/u' => 'e',
-	'/[ÉÈÊË]/u' => 'E',
-	'/[óòôõºö]/u' => 'o',
-	'/[ÓÒÔÕÖ]/u' => 'O',
-	'/[úùûü]/u' => 'u',
-	'/[ÚÙÛÜ]/u' => 'U',
-	'/ç/' => 'c',
-	'/Ç/' => 'C',
-	'/ñ/' => 'n',
-	'/Ñ/' => 'N',
-	"/['`]/u" => ' ',
-];
-//fonction pour remplacer chaque clé (regex) par la valeur attribuer
-function enleverCaracteresSpeciaux($text) {
-	global $listChar;
-	//je remplace les clé du tableau par les valeur du tableau dans le texte
-	return preg_replace(array_keys($listChar), array_values($listChar), $text);
-}
+require "functions.php";
+
+// Old and new filename
+$currentFile = "commande.txt";
+$newFile = "commande-core.txt";
+
 $fileByLigne = [];
 $fileModified='';
 // récupere tout le contenu du fichier pour le remplacer
-$fileContent = file_get_contents('commande.txt');
+$fileContent = utf8_encode(file_get_contents($currentFile));
 $content='';
 // je récupere le contenue du fichier sous la forme d'une ressources
-$file = fopen('commande.txt','r');
+$file = fopen($currentFile,'r');
 // si le fichier existe je stock les valeurs dans un tableaux
-if(file_exists('commande.txt')){
+if(file_exists($currentFile)){
 	//tant que le parcours du fichier n'est pas fini je stock chaque ligne dans un tableau
 	while (!feof($file)) {
 		array_push($fileByLigne, fgets($file));
@@ -41,7 +23,7 @@ if(file_exists('commande.txt')){
 		// j'incrémente la variable pour pas commencé ma ligne a 0
 		$numberLine+=1;
 		// pour chaque expression regulieres je vérifie si une occurence est trouvé par ligne
-		foreach ($listChar as $k => $v) {
+		foreach (listChars() as $k => $v) {
 			//var_dump(preg_match($k,$line));
 			if(preg_match($k,$line))
 			{
@@ -57,7 +39,7 @@ if(file_exists('commande.txt')){
 }
 echo $content;
 // j'ouvre le fichier commande-core.txt en écriture ou je le crée si il n'existe pas //
-$newTxt = fopen("commande-core.txt", "w");
+$newTxt = fopen($newFile, "w");
 // j'écrit dans le fichier le contenu de ma variable qui conteient elle meme toute les modification
 fwrite($newTxt, $fileModified);
 // je ferme le fichier
